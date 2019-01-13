@@ -38,6 +38,7 @@ public class CreateAccountActivity extends AppCompatActivity
    private DatabaseReference mDatabaseReference;
     private FirebaseAuth mAuth;
     private ProgressDialog mProgressDialog;
+    private int weight;
 
 
     @Override
@@ -80,6 +81,7 @@ public class CreateAccountActivity extends AppCompatActivity
         final String type = userType.getText().toString().trim();
         final String dpt = department.getText().toString().trim();
         String pwd = password.getText().toString().trim();
+         weight =5;
 
         if(!TextUtils.isEmpty(fullName) && !TextUtils.isEmpty(email) &&
                 !TextUtils.isEmpty(mobile) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(dpt) && !TextUtils.isEmpty(pwd))
@@ -94,17 +96,35 @@ public class CreateAccountActivity extends AppCompatActivity
                         {
                             if(task.isSuccessful())
                             {
+                                if(type.equals("Driver")) {
 
-                                appuser = FirebaseAuth.getInstance().getCurrentUser();
+
+                                    appuser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+                                    String user_ID = appuser.getUid();
+                                    DatabaseReference currentUserDb = mDatabaseReference.child("appusers").child(user_ID).child("details");
+                                    DatabaseReference weightRef = mDatabaseReference.child("appusers").child(user_ID).child("weight");
+                                    Weight wt = new Weight(5);
+                                    weightRef.setValue(wt);
+
+                                    Details details = new Details(user_ID, fullName, email, type, mobile, dpt);
+                                    currentUserDb.setValue(details);
+
+
+                                }
+                                else
+                                {
+                                    appuser = FirebaseAuth.getInstance().getCurrentUser();
 
 
                                     String user_ID = appuser.getUid();
                                     DatabaseReference currentUserDb = mDatabaseReference.child("appusers").child(user_ID).child("details");
 
-                                    Details details = new Details(user_ID,fullName,email,type,mobile,dpt);
+                                    Details details = new Details(user_ID, fullName, email, type, mobile, dpt);
                                     currentUserDb.setValue(details);
 
-
+                                }
 
 
 

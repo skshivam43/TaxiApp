@@ -6,25 +6,30 @@ public class AddRequest {
     private String destination;
     private String passengers;
     private String journeydate;
-    public AddRequest(){
+    private String journeytime;
 
-    }
 
-    public AddRequest( String source, String destination,String passengers,String journeydate) {
+    public AddRequest( String source, String destination,String passengers,String journeydate, String journeytime) {
         //this.requestID= requestID;
         this.source=source;
         this.destination=destination;
         this.journeydate=journeydate;
         this.passengers=passengers;
+        this.journeytime=journeytime;
     }
 
-   /* public String getRequestID() {
-        return requestID;
-    }
-    public void setRequestID(String requestID)
+    public AddRequest()
     {
-        this.requestID = requestID;
-    }*/
+
+    }
+
+    /* public String getRequestID() {
+         return requestID;
+     }
+     public void setRequestID(String requestID)
+     {
+         this.requestID = requestID;
+     }*/
     public String getSource() {
         return source;
     }
@@ -55,5 +60,11 @@ public class AddRequest {
     public void setPassengers(String passengers)
     {
         this.passengers=passengers;
+    }
+
+    public String getJourneytime(){return journeytime;}
+
+    public void setJourneytime(String journeytime) {
+        this.journeytime = journeytime;
     }
 }

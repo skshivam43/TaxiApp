@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerLocationActivity">
+
+    <Button
+        android:id="@+id/customerStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="189dp"
+        android:text="customerStop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/customerStart"
+        app:layout_constraintTop_toBottomOf="@+id/customerStart" />
+
+    <Button
+        android:id="@+id/customerStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginBottom="46dp"
+        android:text="customerStart"
+        app:layout_constraintBottom_toTopOf="@+id/customerStop"
+        app:layout_constraintStart_toStartOf="@+id/customerLocation"
+        app:layout_constraintTop_toBottomOf="@+id/customerLocation" />
+
+    <TextView
+        android:id="@+id/customerLocation"
+        android:layout_width="110dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginBottom="53dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/customerStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

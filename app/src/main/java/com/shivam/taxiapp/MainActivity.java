@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     private Button signInButton;
     private Button signUpButton;
    private DatabaseReference ref;
+   private Button userDirect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,13 +46,22 @@ public class MainActivity extends AppCompatActivity
          password = (EditText) findViewById(R.id.password);
          signInButton = (Button) findViewById(R.id.signInButton);
          signUpButton = (Button) findViewById(R.id.signUpButton);
+         userDirect = (Button) findViewById(R.id.userDirect);
+       /* userDirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(MainActivity.this,MapsActivity.class));
+                finish();
+            }
+        });*/
 
          signUpButton.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v)
              {
                     startActivity(new Intent(MainActivity.this,CreateAccountActivity.class));
-                    finish();
+
              }
          });
          mAuthListener=  new FirebaseAuth.AuthStateListener() {
@@ -123,14 +133,10 @@ public class MainActivity extends AppCompatActivity
                     } else if (value.equals("Driver")) {
 
                         Toast.makeText(MainActivity.this, "Signed In", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(MainActivity.this, HomePage_Driver.class);
-                        startActivity(intent);
-                    } else if (value.equals("Owner")) {
-
-                        Toast.makeText(MainActivity.this, "Signed In", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(MainActivity.this, HomePage_Owner.class);
+                        Intent intent = new Intent(MainActivity.this, LocationActivity.class);
                         startActivity(intent);
                     }
+
                 }
 
                 @Override
